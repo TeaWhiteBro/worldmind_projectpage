@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WorldMind is a four-layer game world model that decouples compact-state construction, NPC decision-making, action control, and video generation.">
+  <meta name="theme-color" content="#0a1424">
+  <meta property="og:title" content="WorldMind: Decoupled Game World Model for State-Aware NPC Behavior">
+  <meta property="og:description" content="A four-layer closed-loop framework for responsive, state-aware NPC behavior.">
+  <meta property="og:image" content="https://teawhitebro.github.io/worldmind_projectpage/assets/teaser.webp">
+  <meta property="og:image:alt" content="WorldMind teaser: implicit, externally controlled, and state-aware NPC behavior.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teawhitebro.github.io/worldmind_projectpage/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WorldMind: Decoupled Game World Model for State-Aware NPC Behavior">
+  <meta name="twitter:description" content="A four-layer closed-loop framework for responsive, state-aware NPC behavior.">
+  <meta name="twitter:image" content="https://teawhitebro.github.io/worldmind_projectpage/assets/teaser.webp">
+  <title>WorldMind: Decoupled Game World Model for State-Aware NPC Behavior</title>
+  <link rel="canonical" href="https://teawhitebro.github.io/worldmind_projectpage/">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/inter-700.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/inter-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="topbar" data-topbar>
+    <div class="topbar__inner">
+      <a class="brand" href="#top" aria-label="WorldMind, back to top">
+        <span class="brand__mark" aria-hidden="true">
+          <span></span>
+        </span>
+        <span>WorldMind</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#abstract">Abstract</a>
+        <a href="#overview">Overview</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#results">Results</a>
+        <a href="#dataset">Dataset</a>
+      </nav>
+
+      <span class="review-chip">arXiv · 2026</span>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero hero--video" id="top" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <video class="hero__bg-video" autoplay loop muted playsinline preload="metadata"
+               poster="./assets/marquee-poster.webp">
+          <source src="./assets/marquee-wall.mp4" type="video/mp4">
+        </video>
+        <div class="hero__scrim"></div>
+      </div>
+
+      <div class="hero__intro page-shell">
+        <p class="hero__venue">arXiv preprint · 2026</p>
+
+        <h1 id="hero-title">
+          <span class="hero__name">WorldMind</span>
+          <span class="hero__paper-title">Decoupled Game World Model for State-Aware NPC Behavior</span>
+        </h1>
+        <p class="hero__authors">
+          Zhiyang Deng<sup>1,2,&dagger;</sup>,
+          Boran Zhang<sup>1,&dagger;</sup>,
+          Danze Chen<sup>1,2,&dagger;</sup>,
+          Yeying Jin<sup>1,2,&Dagger;,*</sup>
+        </p>
+        <p class="hero__affiliations">
+          <sup>1</sup>Tencent &nbsp;&nbsp; <sup>2</sup>National University of Singapore
+        </p>
+        <p class="hero__authornote">
+          <sup>&dagger;</sup>Work done during research internships at Tencent. &nbsp;
+          <sup>&Dagger;</sup>Project lead. &nbsp;
+          <sup>*</sup>Corresponding author.
+        </p>
+
+        <p class="hero__lead">
+          WorldMind decouples compact-state construction, NPC decision-making,
+          action control, and video generation—then reconnects them in a closed loop.
+        </p>
+
+        <p class="hero__summary">
+          Construct the state. Plan the response. Render the outcome. Repeat.
+        </p>
+
+        <!-- TODO: Code / Checkpoints / Dataset hrefs are placeholders pointing at this page — replace with the GitHub repo, HF model, and HF dataset URLs -->
+        <div class="hero__actions">
+          <a class="button button--pill" href="./assets/worldmind-paper.pdf" target="_blank" rel="noopener">
+            <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8423 0a1.0037 1.0037 0 0 0-.922.6078c-.1536.3687-.0438.6275.2938 1.1113l6.9185 8.3597-1.0223 1.1058a1.0393 1.0393 0 0 0 .003 1.4229l1.2292 1.3135-5.4391 6.4444c-.2803.299-.4538.823-.2971 1.1986a1.0253 1.0253 0 0 0 .9585.635.9133.9133 0 0 0 .6891-.3405l5.783-6.126 7.4902 8.0051a.8527.8527 0 0 0 .6835.2597.9575.9575 0 0 0 .8777-.6138c.1577-.377-.017-.7502-.306-1.1407l-7.0518-8.3418 1.0632-1.13a.9626.9626 0 0 0 .0089-1.3165L4.6336.4639s-.3733-.4535-.768-.463zm0 .272h.0166c.2179.0052.4874.2715.5644.3639l.005.006.0052.0055 10.169 10.9905a.6915.6915 0 0 1-.0072.945l-1.0666 1.133-1.4982-1.7724-8.5994-10.39c-.3286-.472-.352-.6183-.2592-.841a.7307.7307 0 0 1 .6704-.4401Zm14.341 1.5701a.877.877 0 0 0-.6554.2418l-5.6962 6.1584 1.6944 1.8319 5.3089-6.5138c.3251-.4335.479-.6603.3247-1.0292a1.1205 1.1205 0 0 0-.9763-.689zm-7.6557 12.2823 1.3186 1.4135-5.7864 6.1295a.6494.6494 0 0 1-.4959.26.7516.7516 0 0 1-.706-.4669c-.1119-.2682.0359-.6864.2442-.9083l.0051-.0055.0047-.0055z"></path></svg>arXiv
+          </a>
+          <a class="button button--pill" href="https://teawhitebro.github.io/worldmind_projectpage/">
+            <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>Code
+          </a>
+          <a class="button button--pill" href="https://teawhitebro.github.io/worldmind_projectpage/">
+            <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"></path></svg>Checkpoints
+          </a>
+          <a class="button button--pill" href="https://teawhitebro.github.io/worldmind_projectpage/">
+            <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.025 1.13c-5.77 0-10.449 4.647-10.449 10.378 0 1.112.178 2.181.503 3.185.064-.222.203-.444.416-.577a.96.96 0 0 1 .524-.15c.293 0 .584.124.84.284.278.173.48.408.71.694.226.282.458.611.684.951v-.014c.017-.324.106-.622.264-.874s.403-.487.762-.543c.3-.047.596.06.787.203s.31.313.4.467c.15.257.212.468.233.542.01.026.653 1.552 1.657 2.54.616.605 1.01 1.223 1.082 1.912.055.537-.096 1.059-.38 1.572.637.121 1.294.187 1.967.187.657 0 1.298-.063 1.921-.178-.287-.517-.44-1.041-.384-1.581.07-.69.465-1.307 1.081-1.913 1.004-.987 1.647-2.513 1.657-2.539.021-.074.083-.285.233-.542.09-.154.208-.323.4-.467a1.08 1.08 0 0 1 .787-.203c.359.056.604.29.762.543s.247.55.265.874v.015c.225-.34.457-.67.683-.952.23-.286.432-.52.71-.694.257-.16.547-.284.84-.285a.97.97 0 0 1 .524.151c.228.143.373.388.43.625l.006.04a10.3 10.3 0 0 0 .534-3.273c0-5.731-4.678-10.378-10.449-10.378M8.327 6.583a1.5 1.5 0 0 1 .713.174 1.487 1.487 0 0 1 .617 2.013c-.183.343-.762-.214-1.102-.094-.38.134-.532.914-.917.71a1.487 1.487 0 0 1 .69-2.803m7.486 0a1.487 1.487 0 0 1 .689 2.803c-.385.204-.536-.576-.916-.71-.34-.12-.92.437-1.103.094a1.487 1.487 0 0 1 .617-2.013 1.5 1.5 0 0 1 .713-.174m-10.68 1.55a.96.96 0 1 1 0 1.921.96.96 0 0 1 0-1.92m13.838 0a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92M8.489 11.458c.588.01 1.965 1.157 3.572 1.164 1.607-.007 2.984-1.155 3.572-1.164.196-.003.305.12.305.454 0 .886-.424 2.328-1.563 3.202-.22-.756-1.396-1.366-1.63-1.32q-.011.001-.02.006l-.044.026-.01.008-.03.024q-.018.017-.035.036l-.032.04a1 1 0 0 0-.058.09l-.014.025q-.049.088-.11.19a1 1 0 0 1-.083.116 1.2 1.2 0 0 1-.173.18q-.035.029-.075.058a1.3 1.3 0 0 1-.251-.243 1 1 0 0 1-.076-.107c-.124-.193-.177-.363-.337-.444-.034-.016-.104-.008-.2.022q-.094.03-.216.087-.06.028-.125.063l-.13.074q-.067.04-.136.086a3 3 0 0 0-.135.096 3 3 0 0 0-.26.219 2 2 0 0 0-.12.121 2 2 0 0 0-.106.128l-.002.002a2 2 0 0 0-.09.132l-.001.001a1.2 1.2 0 0 0-.105.212q-.013.036-.024.073c-1.139-.875-1.563-2.317-1.563-3.203 0-.334.109-.457.305-.454m.836 10.354c.824-1.19.766-2.082-.365-3.194-1.13-1.112-1.789-2.738-1.789-2.738s-.246-.945-.806-.858-.97 1.499.202 2.362c1.173.864-.233 1.45-.685.64-.45-.812-1.683-2.896-2.322-3.295s-1.089-.175-.938.647 2.822 2.813 2.562 3.244-1.176-.506-1.176-.506-2.866-2.567-3.49-1.898.473 1.23 2.037 2.16c1.564.932 1.686 1.178 1.464 1.53s-3.675-2.511-4-1.297c-.323 1.214 3.524 1.567 3.287 2.405-.238.839-2.71-1.587-3.216-.642-.506.946 3.49 2.056 3.522 2.064 1.29.33 4.568 1.028 5.713-.624m5.349 0c-.824-1.19-.766-2.082.365-3.194 1.13-1.112 1.789-2.738 1.789-2.738s.246-.945.806-.858.97 1.499-.202 2.362c-1.173.864.233 1.45.685.64.451-.812 1.683-2.896 2.322-3.295s1.089-.175.938.647-2.822 2.813-2.562 3.244 1.176-.506 1.176-.506 2.866-2.567 3.49-1.898-.473 1.23-2.037 2.16c-1.564.932-1.686 1.178-1.464 1.53s3.675-2.511 4-1.297c.323 1.214-3.524 1.567-3.287 2.405.238.839 2.71-1.587 3.216-.642.506.946-3.49 2.056-3.522 2.064-1.29.33-4.568 1.028-5.713-.624"></path></svg>Dataset
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--abstract" id="abstract" aria-labelledby="abstract-title">
+      <div class="page-shell abstract-layout">
+        <header class="abstract-heading">
+          <p class="section-label">01 / Paper summary</p>
+          <h2 id="abstract-title">Abstract</h2>
+        </header>
+        <p class="abstract-copy">
+          Game world models have recently demonstrated promising capabilities in generating visually coherent and action-controllable gameplay videos. However, non-player character (NPC) behavior in existing models is either implicitly entangled with video generation or explicitly prescribed through external control signals. Consequently, a game world model has to jointly understand the state, plan the NPC's response and render its visual outcome, limiting its ability to produce responsive and state-aware NPC behavior. The challenge lies in the lack of an explicit interface for state-grounded decision-making. To this end, we introduce WorldMind, to our knowledge the first decoupled framework for state-aware NPC behavior in game world models. WorldMind separates interactive world modeling into four layers: an Understanding Layer that constructs a compact state from generated frames; a Decision Layer that reasons over the compact state to plan the NPC's next action; a Control Layer that translates the actions into temporally aligned conditions; and a Generation Layer that synthesizes their visual outcomes. By reconnecting layers in a closed interaction loop, WorldMind grounds NPC behavior in the evolving game state. We further introduce BOSS-140K, a dataset of gameplay videos paired with rich internal game states, together with an agent that automates the collection at scale. Experiments on BOSS-140K demonstrate reliable compact state reconstruction and mechanics-grounded planning, with WorldMind preferred over the baselines in approximately 70% of pairwise comparisons for its more tactically appropriate and coherent NPC behavior.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--overview" id="overview" aria-labelledby="overview-title">
+      <div class="page-shell">
+        <header class="section-heading section-heading--named">
+          <p class="section-label">02 / System at a glance</p>
+          <h2 id="overview-title">Overview</h2>
+          <p class="section-heading__claim">Plausible frames are not enough.</p>
+          <p class="section-heading__description">
+            A boss can look convincing while choosing the wrong move. Existing game
+            world models either bury NPC behavior inside video prediction or ask an
+            external controller to prescribe it; WorldMind reconstructs the current
+            state, decides the boss action, turns it into a control condition, and
+            renders the next segment.
+          </p>
+        </header>
+
+        <figure class="paper-figure paper-figure--wide">
+          <a class="paper-figure__image" href="./assets/teaser.webp" target="_blank" rel="noopener" aria-label="Open the full-resolution WorldMind comparison figure">
+            <img
+              src="./assets/teaser.webp"
+              width="2359"
+              height="918"
+              alt="Comparison of implicit NPC behavior, externally controlled NPC behavior, and WorldMind's state-aware boss behavior">
+            <span class="paper-figure__open">Open full figure ↗</span>
+          </a>
+          <figcaption>
+            <span>Paper figure 1</span>
+            The baselines either leave NPC behavior implicit in video generation or
+            expose it as external control. WorldMind instead plans from a compact state.
+          </figcaption>
+        </figure>
+
+        <ul class="problem-strip" aria-label="Comparison of NPC behavior interfaces">
+          <li class="problem-strip__baseline">
+            <span class="problem-strip__symbol" aria-hidden="true">≈</span>
+            <div>
+              <p class="problem-strip__type">Implicit behavior</p>
+              <h3>The action stays hidden in pixels.</h3>
+              <p>The model must jointly infer the current state, reason about the NPC action, and render its visual outcome.</p>
+            </div>
+          </li>
+          <li class="problem-strip__baseline">
+            <span class="problem-strip__symbol" aria-hidden="true">→</span>
+            <div>
+              <p class="problem-strip__type">External control</p>
+              <h3>The action is explicit—but prescribed.</h3>
+              <p>The world model renders a supplied boss action without deciding whether it fits the evolving state.</p>
+            </div>
+          </li>
+          <li class="problem-strip__ours">
+            <span class="problem-strip__symbol" aria-hidden="true">↻</span>
+            <div>
+              <p class="problem-strip__type">WorldMind</p>
+              <h3>The action is explicit and state-aware.</h3>
+              <p>A compact state drives the boss decision before the visual consequence is synthesized.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--night" id="architecture" aria-labelledby="architecture-title">
+      <div class="page-shell">
+        <header class="section-heading section-heading--named section-heading--night">
+          <p class="section-label">03 / Four-layer closed loop</p>
+          <h2 id="architecture-title">Architecture</h2>
+          <p class="section-heading__claim">One interaction. Four distinct responsibilities.</p>
+          <p class="section-heading__description">
+            WorldMind separates state understanding, decision-making, action control,
+            and video generation, then feeds the rendered result back into the loop.
+          </p>
+        </header>
+
+        <ol class="pipeline" aria-label="WorldMind's four sequential layers">
+          <li class="pipeline__stage pipeline__stage--understand">
+            <div class="pipeline__top">
+              <span class="pipeline__number">L1</span>
+              <span class="pipeline__verb">What is happening?</span>
+            </div>
+            <h3>Understanding</h3>
+            <p>
+              Constructs a compact state from generated frames and issued boss-action
+              history, combining a learned geometry branch with a deterministic skill branch.
+            </p>
+            <ul>
+              <li>boss identity</li>
+              <li>previous skill + elapsed time + cooldowns</li>
+              <li>distance + angle + facing</li>
+            </ul>
+          </li>
+
+          <li class="pipeline__stage pipeline__stage--decide">
+            <div class="pipeline__top">
+              <span class="pipeline__number">L2</span>
+              <span class="pipeline__verb">What should the boss do?</span>
+            </div>
+            <h3>Decision</h3>
+            <p>
+              A general-purpose language model reasons over the compact state, the full
+              skill set, and cooldown information to form a short-horizon plan.
+            </p>
+            <ul>
+              <li>mechanics-aware skill choice</li>
+              <li>skill choice + movement</li>
+              <li>deterministic duration + legality check</li>
+              <li>issue the first action, then replan</li>
+            </ul>
+          </li>
+
+          <li class="pipeline__stage pipeline__stage--control">
+            <div class="pipeline__top">
+              <span class="pipeline__number">L3</span>
+              <span class="pipeline__verb">How is it expressed?</span>
+            </div>
+            <h3>Control</h3>
+            <p>
+              Converts player and boss actions into temporally aligned natural-language
+              conditions consumed by the video generator.
+            </p>
+            <ul>
+              <li>separate entity action slots</li>
+              <li>direct player control</li>
+              <li>high-level director control</li>
+            </ul>
+          </li>
+
+          <li class="pipeline__stage pipeline__stage--generate">
+            <div class="pipeline__top">
+              <span class="pipeline__number">L4</span>
+              <span class="pipeline__verb">What happens next?</span>
+            </div>
+            <h3>Generation</h3>
+            <p>
+              Renders the selected actions with a Wan 2.2 TI2V-5B generator distilled
+              through causal AR training, consistency initialization, and asymmetric DMD.
+            </p>
+            <ul>
+              <li>temporally aligned synthesis</li>
+              <li>autoregressive video</li>
+              <li>distilled generator at ≈20 FPS</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="loop-return" role="note" aria-label="The generated frames return to the Understanding Layer">
+          <span aria-hidden="true">↳</span>
+          <p><strong>Then the rendered frames return to L1.</strong> The boss can react again as the interaction evolves.</p>
+          <span class="loop-return__rule" aria-hidden="true"></span>
+        </div>
+
+        <figure class="paper-figure paper-figure--dark">
+          <a class="paper-figure__image" href="./assets/framework.webp" target="_blank" rel="noopener" aria-label="Open the full-resolution WorldMind framework figure">
+            <img
+              src="./assets/framework.webp"
+              width="2400"
+              height="1350"
+              alt="Overview of the WorldMind framework with Understanding, Decision, Control, and Generation layers in a closed loop">
+            <span class="paper-figure__open">Open full figure ↗</span>
+          </a>
+          <figcaption>
+            <span>Paper figure 3</span>
+            WorldMind separates state reconstruction, decision-making, temporally aligned
+            control, and video generation, then reconnects them in a closed loop.
+          </figcaption>
+        </figure>
+
+        <div class="control-modes">
+          <div class="control-mode">
+            <p class="control-modes__tag">Direct control</p>
+            <article>
+              <h3>You play. WorldMind runs the boss.</h3>
+              <p>Keyboard and mouse events become symbolic player actions, while L2 chooses the boss response from the current compact state.</p>
+              <code>PLAYER: move left + dodge<br>BOSS: approach + heavy slash</code>
+            </article>
+          </div>
+          <div class="control-mode">
+            <p class="control-modes__tag">Director control</p>
+            <article>
+              <h3>You direct the scene at a higher level.</h3>
+              <p>A natural-language instruction guides both entities while the state-aware decision process remains inside the loop.</p>
+              <code>“The player keeps evading while<br>the boss remains highly aggressive.”</code>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="examples" aria-labelledby="examples-title">
+      <div class="page-shell">
+        <header class="section-heading section-heading--named">
+          <p class="section-label">04 / Across three games</p>
+          <h2 id="examples-title">Examples</h2>
+          <p class="section-heading__claim">One decision, end to end.</p>
+          <p class="section-heading__description">
+            Across Game A, The Binding of Isaac, and Hollow Knight, the same
+            L1 → L2 → L3 → L4 contract turns visual history into a state-aware action
+            and then into the next generated segment.
+          </p>
+        </header>
+
+        <figure class="paper-figure paper-figure--wide">
+          <a class="paper-figure__image" href="./assets/walkthrough.webp" target="_blank" rel="noopener" aria-label="Open the full-resolution qualitative walkthrough">
+            <img
+              src="./assets/walkthrough.webp"
+              width="2349"
+              height="1021"
+              alt="Three qualitative examples showing state reconstruction, boss action selection, prompt construction, and generated output">
+            <span class="paper-figure__open">Open full figure ↗</span>
+          </a>
+          <figcaption>
+            <span>Paper figure 4</span>
+            Qualitative walkthrough. L2 may plan up to three actions, but only the first
+            planned action passes to L3; its rationale remains analysis-only.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--evidence" id="results" aria-labelledby="results-title">
+      <div class="page-shell">
+        <header class="section-heading section-heading--named">
+          <p class="section-label">05 / System and interfaces</p>
+          <h2 id="results-title">Results</h2>
+          <p class="section-heading__claim">The full system wins under both judges.</p>
+          <p class="section-heading__description">
+            We compare the assembled closed-loop system against the implicit and
+            explicit baselines under matched starts, the same backbone, and the same
+            training corpus.
+          </p>
+        </header>
+
+        <div class="system-results">
+          <div class="system-results__header">
+            <div>
+              <p class="eyebrow">Full system</p>
+              <h3>WorldMind ranks first under both judges.</h3>
+            </div>
+            <div class="judge-tabs" role="tablist" aria-label="Select evaluation judge">
+              <button class="is-active" type="button" role="tab" aria-selected="true" data-judge="gpt">GPT-5.5</button>
+              <button type="button" role="tab" aria-selected="false" data-judge="gemini">Gemini-3.1-pro</button>
+            </div>
+          </div>
+
+          <div class="preference-pairs" aria-live="polite">
+            <div>
+              <span class="preference-pairs__value" data-value="pref-implicit">71.5%</span>
+              <p>preferred over <strong>implicit NPC behavior</strong></p>
+            </div>
+            <div>
+              <span class="preference-pairs__value" data-value="pref-external">70.9%</span>
+              <p>preferred over <strong>explicit NPC control</strong></p>
+            </div>
+          </div>
+
+          <div class="score-table-wrap">
+            <table class="score-table">
+              <thead>
+                <tr>
+                  <th scope="col">System</th>
+                  <th scope="col">Action validity ↑</th>
+                  <th scope="col">Sequence fit ↑</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="score-table__ours">
+                  <th scope="row">WorldMind</th>
+                  <td data-value="valid-ours">74.0%</td>
+                  <td data-value="segment-ours">3.85 / 5</td>
+                </tr>
+                <tr>
+                  <th scope="row">Wan w/o NPC control</th>
+                  <td data-value="valid-implicit">63.6%</td>
+                  <td data-value="segment-implicit">3.28 / 5</td>
+                </tr>
+                <tr>
+                  <th scope="row">Wan w/ NPC control</th>
+                  <td data-value="valid-external">63.6%</td>
+                  <td data-value="segment-external">3.22 / 5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="result-note">
+            One-minute Game A rollouts: 86 matched starts per system, 12 generated
+            segments per rollout, and three independent judge passes. All systems use
+            the same Wan 2.2 backbone and training corpus; the implicit baseline is
+            player-only, while the explicit baseline and WorldMind are boss-conditioned.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section section--dataset" id="dataset" aria-labelledby="dataset-title">
+      <div class="page-shell dataset-layout">
+        <div class="dataset-copy">
+          <p class="section-label">06 / Training data</p>
+          <h2 id="dataset-title">Dataset</h2>
+          <p class="dataset-copy__strap">
+            BOSS-140K aligns pixels, controls, skills, and state on one timeline.
+          </p>
+          <p class="dataset-copy__lead">
+            <strong><u>B</u>oss-fight <u>O</u>bservations with <u>S</u>tates and <u>S</u>kills</strong> provides
+            aligned data for training and evaluating the loop; L2 remains an untuned
+            general-purpose language model.
+          </p>
+          <p>
+            A state-conditioned gameplay agent interacts with each boss while the
+            collection pipeline records gameplay video, player controls, boss skills,
+            animation states, internal variables, and captions in alignment.
+            Engine access is used only for data collection—not at WorldMind inference time.
+          </p>
+
+          <dl class="dataset-facts">
+            <div>
+              <dt>144,631</dt>
+              <dd>L4 clips · 21 temporal latents each</dd>
+            </div>
+            <div>
+              <dt>279,721</dt>
+              <dd>non-death decision rows</dd>
+            </div>
+            <div>
+              <dt>14</dt>
+              <dd>bosses</dd>
+            </div>
+            <div>
+              <dt>3</dt>
+              <dd>games · 2D + 2.5D</dd>
+            </div>
+          </dl>
+
+          <ul class="game-list" aria-label="Games represented in BOSS-140K">
+            <li>Game A</li>
+            <li>Hollow Knight</li>
+            <li>The Binding of Isaac</li>
+          </ul>
+        </div>
+
+        <figure class="dataset-figure">
+          <a class="paper-figure__image" href="./assets/dataset.webp" target="_blank" rel="noopener" aria-label="Open the full-resolution BOSS-140K collection figure">
+            <img
+              src="./assets/dataset.webp"
+              width="921"
+              height="978"
+              alt="BOSS-140K construction pipeline from a state-conditioned gameplay agent to frame-aligned video and state annotations">
+            <span class="paper-figure__open">Open full figure ↗</span>
+          </a>
+          <figcaption>
+            <span>Paper figure 2</span>
+            A state-conditioned agent automates collection while video, controls,
+            NPC skills, engine variables, and action captions share one timeline.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--release" id="resources" aria-labelledby="resources-title">
+      <div class="page-shell">
+        <header class="section-heading section-heading--named">
+          <p class="section-label">07 / Citation</p>
+          <h2 id="resources-title">Citation</h2>
+          <p class="section-heading__claim">Cite the preprint.</p>
+          <p class="section-heading__description">
+            The preprint is available above. Code and data will be released; one of the
+            three titles is referred to as Game A and its frames are blurred.
+          </p>
+        </header>
+
+        <div class="citation-block">
+          <div class="citation-block__header">
+            <h3>BibTeX</h3>
+            <button class="copy-button" type="button" data-copy-citation>Copy BibTeX</button>
+          </div>
+          <pre id="bibtex" data-citation-text><code>@article{deng2026worldmind,
+  title   = {WorldMind: Decoupled Game World Model for State-Aware NPC Behavior},
+  author  = {Deng, Zhiyang and Zhang, Boran and Chen, Danze and Jin, Yeying},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page-shell footer-inner">
+      <p><strong>WorldMind</strong> · arXiv preprint · 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
