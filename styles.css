@@ -3181,3 +3181,240 @@ footer {
   text-underline-offset: 3px;
   text-decoration-color: var(--control);
 }
+
+/* ==========================================================================
+   分拍播放器(结果区)+ 1h rollout
+   ========================================================================== */
+
+.beats {
+  margin-top: 26px;
+}
+
+.beats__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.beats__tab {
+  padding: 9px 18px;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.beats__tab:hover {
+  border-color: var(--line-strong);
+}
+
+.beats__tab.is-active {
+  color: var(--white);
+  background: var(--night);
+  border-color: var(--night);
+}
+
+.beat-clip {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.beat-stage {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  background: #07101e;
+}
+
+.beat-stage__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 13 / 7.5;
+  object-fit: cover;
+}
+
+.beat-stage__seam {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  margin: 0;
+  padding: 9px 13px;
+  color: var(--white);
+  background: rgba(10, 20, 36, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.beat-side {
+  min-width: 0;
+}
+
+.beat-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.beat {
+  padding: 15px 17px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  opacity: 0.5;
+  transition: opacity 0.2s ease, border-left-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.beat.is-active {
+  opacity: 1;
+  border-left-color: var(--decide-deep);
+  box-shadow: var(--shadow-sm);
+}
+
+.beat__n {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.beat__dist {
+  margin: 7px 0 0;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+}
+
+.beat__dist strong {
+  color: var(--ink);
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+.beat__decision {
+  margin: 9px 0 0;
+}
+
+.beat__decision code {
+  display: inline-block;
+  padding: 5px 11px;
+  color: var(--decide-deep);
+  background: rgba(240, 160, 120, 0.13);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.beat__reason {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.beat-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.beat-btn {
+  padding: 9px 16px;
+  color: var(--white);
+  background: var(--night);
+  border: 1px solid var(--night);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.18s ease;
+}
+
+.beat-btn:not(.is-active) {
+  color: var(--ink-soft);
+  background: var(--surface);
+  border-color: var(--line-strong);
+}
+
+.beat-btn:hover {
+  opacity: 0.85;
+}
+
+.beat-btn--ghost {
+  color: var(--understand-deep);
+  background: none;
+  border-color: var(--understand-deep);
+}
+
+/* --- 1h rollout --- */
+.rollout {
+  margin: 0;
+}
+
+.rollout__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 13 / 7.5;
+  background: #07101e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-night), var(--edge-light);
+}
+
+.rollout figcaption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  padding-top: 13px;
+  color: #91a0b1;
+  font-size: 12.8px;
+  line-height: 1.5;
+}
+
+.rollout figcaption span {
+  color: var(--control);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+  .beat-clip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* hidden 属性会被 display:grid 盖掉,显式补上 */
+.beat-clip[hidden] {
+  display: none;
+}

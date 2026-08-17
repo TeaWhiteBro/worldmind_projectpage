@@ -41,6 +41,7 @@
         <a href="#architecture">Architecture</a>
         <a href="#results">Results</a>
         <a href="#dataset">Dataset</a>
+        <a href="#rollout">Rollout</a>
       </nav>
 
       <span class="review-chip">arXiv · 2026</span>
@@ -408,6 +409,148 @@
           </p>
         </div>
 
+        <div class="beats" data-beats>
+          <div class="beats__tabs" role="tablist" aria-label="Select a two-beat rollout">
+          <button class="beats__tab is-active" type="button" role="tab" data-clip="fk013"
+                  aria-selected="true" aria-controls="beat-fk013">False Knight 1</button>
+          <button class="beats__tab" type="button" role="tab" data-clip="fk005"
+                  aria-selected="false" aria-controls="beat-fk005">False Knight 2</button>
+          <button class="beats__tab" type="button" role="tab" data-clip="hk021"
+                  aria-selected="false" aria-controls="beat-hk021">Hive Knight</button>
+          <button class="beats__tab" type="button" role="tab" data-clip="hn041"
+                  aria-selected="false" aria-controls="beat-hn041">Hornet</button>
+          </div>
+
+        <article class="beat-clip is-active" id="beat-fk013" role="tabpanel" data-clip-panel="fk013">
+          <div class="beat-stage">
+            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+                   poster="./assets/beat-fk013-b1.webp"
+                   data-b1="./assets/beat-fk013-b1.mp4" data-p1="./assets/beat-fk013-b1.webp"
+                   data-b2="./assets/beat-fk013-b2.mp4" data-p2="./assets/beat-fk013-b2.webp">
+              <source src="./assets/beat-fk013-b1.mp4" type="video/mp4">
+            </video>
+            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+          </div>
+          <div class="beat-side">
+            <ol class="beat-list">
+              <li class="beat is-active" data-beat="1">
+                <p class="beat__n">Beat 1</p>
+                <p class="beat__dist">distance <strong>5.21</strong></p>
+                <p class="beat__decision"><code>jump_attack</code></p>
+                <p class="beat__reason">The player is at a far distance (5.2 units), so a gap-closer attack is necessary to initiate engagement.</p>
+              </li>
+              <li class="beat" data-beat="2">
+                <p class="beat__n">Beat 2</p>
+                <p class="beat__dist">distance <strong>0.53</strong></p>
+                <p class="beat__decision"><code>mace_slam</code></p>
+                <p class="beat__reason">The player is point-blank, so a ground attack like mace_slam will maximize immediate damage and pressure.</p>
+              </li>
+            </ol>
+            <div class="beat-controls">
+              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
+              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
+            </div>
+          </div>
+        </article>
+        <article class="beat-clip" id="beat-fk005" role="tabpanel" data-clip-panel="fk005" hidden>
+          <div class="beat-stage">
+            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+                   poster="./assets/beat-fk005-b1.webp"
+                   data-b1="./assets/beat-fk005-b1.mp4" data-p1="./assets/beat-fk005-b1.webp"
+                   data-b2="./assets/beat-fk005-b2.mp4" data-p2="./assets/beat-fk005-b2.webp">
+              <source src="./assets/beat-fk005-b1.mp4" type="video/mp4">
+            </video>
+            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+          </div>
+          <div class="beat-side">
+            <ol class="beat-list">
+              <li class="beat is-active" data-beat="1">
+                <p class="beat__n">Beat 1</p>
+                <p class="beat__dist">distance <strong>0.30</strong></p>
+                <p class="beat__decision"><code>mace_slam</code></p>
+                <p class="beat__reason">Player is point-blank, so a ground attack to punish the close range is the most direct response.</p>
+              </li>
+              <li class="beat" data-beat="2">
+                <p class="beat__n">Beat 2</p>
+                <p class="beat__dist">distance <strong>1.25</strong></p>
+                <p class="beat__decision"><code>jump_attack</code></p>
+                <p class="beat__reason">The player is very close, so a gap-closer attack is necessary to maintain pressure and potentially initiate a combo.</p>
+              </li>
+            </ol>
+            <div class="beat-controls">
+              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
+              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
+            </div>
+          </div>
+        </article>
+        <article class="beat-clip" id="beat-hk021" role="tabpanel" data-clip-panel="hk021" hidden>
+          <div class="beat-stage">
+            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+                   poster="./assets/beat-hk021-b1.webp"
+                   data-b1="./assets/beat-hk021-b1.mp4" data-p1="./assets/beat-hk021-b1.webp"
+                   data-b2="./assets/beat-hk021-b2.mp4" data-p2="./assets/beat-hk021-b2.webp">
+              <source src="./assets/beat-hk021-b1.mp4" type="video/mp4">
+            </video>
+            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+          </div>
+          <div class="beat-side">
+            <ol class="beat-list">
+              <li class="beat is-active" data-beat="1">
+                <p class="beat__n">Beat 1</p>
+                <p class="beat__dist">distance <strong>1.30</strong></p>
+                <p class="beat__decision"><code>slash_combo</code></p>
+                <p class="beat__reason">The player is very close (1.3 units), making the close-range melee skill ideal for immediate damage.</p>
+              </li>
+              <li class="beat" data-beat="2">
+                <p class="beat__n">Beat 2</p>
+                <p class="beat__dist">distance <strong>4.34</strong></p>
+                <p class="beat__decision"><code>stinger_dash</code></p>
+                <p class="beat__reason">The player is at a moderate distance (4.3 units) and in front, so a gap-closer is necessary to initiate a close-range engagement.</p>
+              </li>
+            </ol>
+            <div class="beat-controls">
+              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
+              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
+            </div>
+          </div>
+        </article>
+        <article class="beat-clip" id="beat-hn041" role="tabpanel" data-clip-panel="hn041" hidden>
+          <div class="beat-stage">
+            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+                   poster="./assets/beat-hn041-b1.webp"
+                   data-b1="./assets/beat-hn041-b1.mp4" data-p1="./assets/beat-hn041-b1.webp"
+                   data-b2="./assets/beat-hn041-b2.mp4" data-p2="./assets/beat-hn041-b2.webp">
+              <source src="./assets/beat-hn041-b1.mp4" type="video/mp4">
+            </video>
+            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+          </div>
+          <div class="beat-side">
+            <ol class="beat-list">
+              <li class="beat is-active" data-beat="1">
+                <p class="beat__n">Beat 1</p>
+                <p class="beat__dist">distance <strong>4.34</strong></p>
+                <p class="beat__decision"><code>air_dash</code></p>
+                <p class="beat__reason">The player is at a far distance (4.3 units), so using air_dash is the best way to close the gap and initiate engagement.</p>
+              </li>
+              <li class="beat" data-beat="2">
+                <p class="beat__n">Beat 2</p>
+                <p class="beat__dist">distance <strong>4.71</strong></p>
+                <p class="beat__decision"><code>ground_dash</code></p>
+                <p class="beat__reason">The player is at a close-to-medium distance (4.7 units) and in front, so a ground dash is the best way to close the gap for an immediate attack.</p>
+              </li>
+            </ol>
+            <div class="beat-controls">
+              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
+              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
+            </div>
+          </div>
+        </article>
+        </div>
+
       </div>
     </section>
 
@@ -475,10 +618,32 @@
       </div>
     </section>
 
+    <section class="section section--night" id="rollout" aria-labelledby="rollout-title">
+      <div class="page-shell">
+        <header class="section-heading section-heading--named section-heading--night">
+          <p class="section-label">07 / Long rollout</p>
+          <h2 id="rollout-title">One-hour rollout</h2>
+          <p class="section-heading__claim">The loop keeps running for an hour.</p>
+          <p class="section-heading__description">
+            Two-step distilled generator, one hour of continuous closed-loop generation,
+            played back at 6&times; speed.
+          </p>
+        </header>
+
+        <figure class="rollout">
+          <video class="rollout__video" controls playsinline preload="none"
+                 poster="./assets/rollout-1h-poster.webp">
+            <source src="./assets/rollout-1h-6x.mp4" type="video/mp4">
+          </video>
+          <figcaption><span>1 h &middot; 6&times;</span> One continuous rollout, no resets.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="section section--release" id="resources" aria-labelledby="resources-title">
       <div class="page-shell">
         <header class="section-heading section-heading--named">
-          <p class="section-label">07 / Citation</p>
+          <p class="section-label">08 / Citation</p>
           <h2 id="resources-title">Citation</h2>
           <p class="section-heading__claim">Cite the preprint.</p>
           <p class="section-heading__description">
