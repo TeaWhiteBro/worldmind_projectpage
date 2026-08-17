@@ -144,13 +144,39 @@
   }
 })();
 
-/* 分拍播放器:第一拍播完停在尾帧并提示,再点第二拍 */
+/* 分拍播放器:选按钮只切换并停在首帧,播放要手动点 */
 (() => {
   const root = document.querySelector("[data-beats]");
   if (!root) return;
 
   const tabs = Array.from(root.querySelectorAll("[data-clip]"));
   const panels = Array.from(root.querySelectorAll("[data-clip-panel]"));
+
+  function select(panel, n, play) {
+    const video = panel.querySelector("[data-beat-video]");
+    const seam = panel.querySelector("[data-seam]");
+    if (!video) return;
+
+    video.pause();
+    video.poster = video.dataset["p" + n];
+    video.src = video.dataset["b" + n];
+    video.load();                                  // 停在该拍首帧
+    if (seam) seam.hidden = true;
+
+    panel.querySelectorAll(".beat").forEach((b) => {
+      b.classList.toggle("is-active", b.dataset.beat === String(n));
+    });
+    panel.querySelectorAll("[data-beat-select]").forEach((b) => {
+      b.classList.toggle("is-active", b.dataset.beatSelect === String(n));
+    });
+    panel.classList.remove("is-playing");
+
+    if (play) {
+      const go = () => video.play().catch(() => {});
+      if (video.readyState >= 2) go();
+      else video.addEventListener("loadeddata", go, { once: true });
+    }
+  }
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -163,73 +189,55 @@
         const on = p.dataset.clipPanel === tab.dataset.clip;
         p.classList.toggle("is-active", on);
         p.hidden = !on;
-        if (!on) {
-          const v = p.querySelector("[data-beat-video]");
-          if (v) v.pause();
-        } else {
-          reset(p);
-        }
+        const v = p.querySelector("[data-beat-video]");
+        if (!on && v) v.pause();
+        if (on) select(p, 1, false);
       });
     });
   });
 
-  function reset(panel) {
-    setBeat(panel, 1, false);
-  }
-
-  function setBeat(panel, n, play) {
-    const video = panel.querySelector("[data-beat-video]");
-    const seam = panel.querySelector("[data-seam]");
-    if (!video) return;
-
-    video.pause();
-    video.poster = video.dataset["p" + n];
-    video.src = video.dataset["b" + n];
-    video.load();
-    if (seam) seam.hidden = true;
-
-    panel.querySelectorAll(".beat").forEach((b) => {
-      b.classList.toggle("is-active", b.dataset.beat === String(n));
-    });
-    panel.querySelectorAll("[data-beat-play]").forEach((b) => {
-      b.classList.toggle("is-active", b.dataset.beatPlay === String(n));
-    });
-
-    if (play) {
-      const go = () => video.play().catch(() => {});
-      if (video.readyState >= 2) go();
-      else video.addEventListener("loadeddata", go, { once: true });
-    }
-  }
-
   panels.forEach((panel) => {
     const video = panel.querySelector("[data-beat-video]");
     const seam = panel.querySelector("[data-seam]");
+    const start = panel.querySelector("[data-beat-start]");
     if (!video) return;
 
     let chain = false;
 
-    panel.querySelectorAll("[data-beat-play]").forEach((btn) => {
+    panel.querySelectorAll("[data-beat-select]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const which = btn.dataset.beatPlay;
-        if (which === "all") {
-          chain = true;
-          setBeat(panel, 1, true);
-        } else {
-          chain = false;
-          setBeat(panel, Number(which), true);
-        }
+        chain = false;
+        select(panel, Number(btn.dataset.beatSelect), false);   // 只切换,不播
       });
     });
 
+    if (start) {
+      start.addEventListener("click", () => {
+        chain = false;
+        video.play().catch(() => {});
+      });
+    }
+
+    const playAll = panel.querySelector('[data-beat-play="all"]');
+    if (playAll) {
+      playAll.addEventListener("click", () => {
+        chain = true;
+        select(panel, 1, true);
+      });
+    }
+
+    video.addEventListener("playing", () => panel.classList.add("is-playing"));
+    video.addEventListener("pause", () => panel.classList.remove("is-playing"));
+
     video.addEventListener("ended", () => {
-      const onBeat1 = video.currentSrc.endsWith(video.dataset.b1.replace("./", ""));
-      if (!onBeat1) return;
-      if (seam) seam.hidden = false;          // 停在尾帧,点出交接
+      panel.classList.remove("is-playing");
+      const onFirst = video.currentSrc.endsWith(video.dataset.b1.replace("./", ""));
+      if (!onFirst) return;
+      if (seam) seam.hidden = false;              // 停在尾帧,点出交接
       if (chain) {
         window.setTimeout(() => {
           if (seam) seam.hidden = true;
-          setBeat(panel, 2, true);
+          select(panel, 2, true);
         }, 1600);
       }
     });

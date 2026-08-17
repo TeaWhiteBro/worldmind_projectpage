@@ -3418,3 +3418,51 @@ footer {
 .beat-clip[hidden] {
   display: none;
 }
+
+/* --- 覆盖式播放键:默认停在首帧,手动点才播 --- */
+.beat-stage__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0;
+  background: rgba(10, 20, 36, 0.28);
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.beat-stage__play svg {
+  width: 34px;
+  height: 34px;
+  padding: 15px;
+  box-sizing: content-box;
+  fill: var(--white);
+  stroke: none;
+  background: rgba(10, 20, 36, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.2s ease;
+}
+
+.beat-stage__play:hover {
+  background: rgba(10, 20, 36, 0.18);
+}
+
+.beat-stage__play:hover svg {
+  transform: scale(1.07);
+}
+
+.beat-clip.is-playing .beat-stage__play {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 原生 controls 在底部,接缝提示挪到顶部避让 */
+.beat-stage__seam {
+  top: 14px;
+  bottom: auto;
+}

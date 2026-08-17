@@ -423,128 +423,144 @@
 
         <article class="beat-clip is-active" id="beat-fk013" role="tabpanel" data-clip-panel="fk013">
           <div class="beat-stage">
-            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+            <video class="beat-stage__video" data-beat-video controls playsinline preload="none" muted
                    poster="./assets/beat-fk013-b1.webp"
                    data-b1="./assets/beat-fk013-b1.mp4" data-p1="./assets/beat-fk013-b1.webp"
                    data-b2="./assets/beat-fk013-b2.mp4" data-p2="./assets/beat-fk013-b2.webp">
               <source src="./assets/beat-fk013-b1.mp4" type="video/mp4">
             </video>
-            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+            <button class="beat-stage__play" type="button" data-beat-start
+                    aria-label="Play this decision">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </button>
+            <p class="beat-stage__seam" data-seam hidden>Decision&nbsp;2 was generated from this frame.</p>
           </div>
           <div class="beat-side">
             <ol class="beat-list">
               <li class="beat is-active" data-beat="1">
-                <p class="beat__n">Beat 1</p>
+                <p class="beat__n">Decision 1</p>
                 <p class="beat__dist">distance <strong>5.21</strong></p>
                 <p class="beat__decision"><code>jump_attack</code></p>
                 <p class="beat__reason">The player is at a far distance (5.2 units), so a gap-closer attack is necessary to initiate engagement.</p>
               </li>
               <li class="beat" data-beat="2">
-                <p class="beat__n">Beat 2</p>
+                <p class="beat__n">Decision 2</p>
                 <p class="beat__dist">distance <strong>0.53</strong></p>
                 <p class="beat__decision"><code>mace_slam</code></p>
                 <p class="beat__reason">The player is point-blank, so a ground attack like mace_slam will maximize immediate damage and pressure.</p>
               </li>
             </ol>
             <div class="beat-controls">
-              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
-              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn is-active" type="button" data-beat-select="1">Decision 1</button>
+              <button class="beat-btn" type="button" data-beat-select="2">Decision 2</button>
               <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
             </div>
           </div>
         </article>
         <article class="beat-clip" id="beat-fk005" role="tabpanel" data-clip-panel="fk005" hidden>
           <div class="beat-stage">
-            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+            <video class="beat-stage__video" data-beat-video controls playsinline preload="none" muted
                    poster="./assets/beat-fk005-b1.webp"
                    data-b1="./assets/beat-fk005-b1.mp4" data-p1="./assets/beat-fk005-b1.webp"
                    data-b2="./assets/beat-fk005-b2.mp4" data-p2="./assets/beat-fk005-b2.webp">
               <source src="./assets/beat-fk005-b1.mp4" type="video/mp4">
             </video>
-            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+            <button class="beat-stage__play" type="button" data-beat-start
+                    aria-label="Play this decision">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </button>
+            <p class="beat-stage__seam" data-seam hidden>Decision&nbsp;2 was generated from this frame.</p>
           </div>
           <div class="beat-side">
             <ol class="beat-list">
               <li class="beat is-active" data-beat="1">
-                <p class="beat__n">Beat 1</p>
+                <p class="beat__n">Decision 1</p>
                 <p class="beat__dist">distance <strong>0.30</strong></p>
                 <p class="beat__decision"><code>mace_slam</code></p>
                 <p class="beat__reason">Player is point-blank, so a ground attack to punish the close range is the most direct response.</p>
               </li>
               <li class="beat" data-beat="2">
-                <p class="beat__n">Beat 2</p>
+                <p class="beat__n">Decision 2</p>
                 <p class="beat__dist">distance <strong>1.25</strong></p>
                 <p class="beat__decision"><code>jump_attack</code></p>
                 <p class="beat__reason">The player is very close, so a gap-closer attack is necessary to maintain pressure and potentially initiate a combo.</p>
               </li>
             </ol>
             <div class="beat-controls">
-              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
-              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn is-active" type="button" data-beat-select="1">Decision 1</button>
+              <button class="beat-btn" type="button" data-beat-select="2">Decision 2</button>
               <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
             </div>
           </div>
         </article>
         <article class="beat-clip" id="beat-hk021" role="tabpanel" data-clip-panel="hk021" hidden>
           <div class="beat-stage">
-            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+            <video class="beat-stage__video" data-beat-video controls playsinline preload="none" muted
                    poster="./assets/beat-hk021-b1.webp"
                    data-b1="./assets/beat-hk021-b1.mp4" data-p1="./assets/beat-hk021-b1.webp"
                    data-b2="./assets/beat-hk021-b2.mp4" data-p2="./assets/beat-hk021-b2.webp">
               <source src="./assets/beat-hk021-b1.mp4" type="video/mp4">
             </video>
-            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+            <button class="beat-stage__play" type="button" data-beat-start
+                    aria-label="Play this decision">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </button>
+            <p class="beat-stage__seam" data-seam hidden>Decision&nbsp;2 was generated from this frame.</p>
           </div>
           <div class="beat-side">
             <ol class="beat-list">
               <li class="beat is-active" data-beat="1">
-                <p class="beat__n">Beat 1</p>
+                <p class="beat__n">Decision 1</p>
                 <p class="beat__dist">distance <strong>1.30</strong></p>
                 <p class="beat__decision"><code>slash_combo</code></p>
                 <p class="beat__reason">The player is very close (1.3 units), making the close-range melee skill ideal for immediate damage.</p>
               </li>
               <li class="beat" data-beat="2">
-                <p class="beat__n">Beat 2</p>
+                <p class="beat__n">Decision 2</p>
                 <p class="beat__dist">distance <strong>4.34</strong></p>
                 <p class="beat__decision"><code>stinger_dash</code></p>
                 <p class="beat__reason">The player is at a moderate distance (4.3 units) and in front, so a gap-closer is necessary to initiate a close-range engagement.</p>
               </li>
             </ol>
             <div class="beat-controls">
-              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
-              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn is-active" type="button" data-beat-select="1">Decision 1</button>
+              <button class="beat-btn" type="button" data-beat-select="2">Decision 2</button>
               <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
             </div>
           </div>
         </article>
         <article class="beat-clip" id="beat-hn041" role="tabpanel" data-clip-panel="hn041" hidden>
           <div class="beat-stage">
-            <video class="beat-stage__video" data-beat-video playsinline preload="none" muted
+            <video class="beat-stage__video" data-beat-video controls playsinline preload="none" muted
                    poster="./assets/beat-hn041-b1.webp"
                    data-b1="./assets/beat-hn041-b1.mp4" data-p1="./assets/beat-hn041-b1.webp"
                    data-b2="./assets/beat-hn041-b2.mp4" data-p2="./assets/beat-hn041-b2.webp">
               <source src="./assets/beat-hn041-b1.mp4" type="video/mp4">
             </video>
-            <p class="beat-stage__seam" data-seam hidden>Beat&nbsp;2 was generated from this frame.</p>
+            <button class="beat-stage__play" type="button" data-beat-start
+                    aria-label="Play this decision">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </button>
+            <p class="beat-stage__seam" data-seam hidden>Decision&nbsp;2 was generated from this frame.</p>
           </div>
           <div class="beat-side">
             <ol class="beat-list">
               <li class="beat is-active" data-beat="1">
-                <p class="beat__n">Beat 1</p>
+                <p class="beat__n">Decision 1</p>
                 <p class="beat__dist">distance <strong>4.34</strong></p>
                 <p class="beat__decision"><code>air_dash</code></p>
                 <p class="beat__reason">The player is at a far distance (4.3 units), so using air_dash is the best way to close the gap and initiate engagement.</p>
               </li>
               <li class="beat" data-beat="2">
-                <p class="beat__n">Beat 2</p>
+                <p class="beat__n">Decision 2</p>
                 <p class="beat__dist">distance <strong>4.71</strong></p>
                 <p class="beat__decision"><code>ground_dash</code></p>
                 <p class="beat__reason">The player is at a close-to-medium distance (4.7 units) and in front, so a ground dash is the best way to close the gap for an immediate attack.</p>
               </li>
             </ol>
             <div class="beat-controls">
-              <button class="beat-btn is-active" type="button" data-beat-play="1">Beat 1</button>
-              <button class="beat-btn" type="button" data-beat-play="2">Beat 2</button>
+              <button class="beat-btn is-active" type="button" data-beat-select="1">Decision 1</button>
+              <button class="beat-btn" type="button" data-beat-select="2">Decision 2</button>
               <button class="beat-btn beat-btn--ghost" type="button" data-beat-play="all">Play both</button>
             </div>
           </div>
